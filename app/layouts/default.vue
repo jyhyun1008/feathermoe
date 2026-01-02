@@ -40,7 +40,7 @@
         font-weight: 700;
     }
 
-    header > div {
+    header > div > a {
         color: white;
         text-decoration: none;
     }

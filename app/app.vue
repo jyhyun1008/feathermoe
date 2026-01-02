@@ -6,8 +6,6 @@
   </NuxtLayout>
 </template>
 <style>
-@import "tailwindcss";
-@import "@nuxt/ui";
 
   /* 폰트 설정 (실제 폰트 파일로 교체하세요) */
   @font-face {
@@ -16,6 +14,7 @@
       font-weight: 700;
       font-style: normal;
   }
+  
   @font-face {
     font-family: 'Pretendard';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2') format('woff2');
@@ -44,6 +43,8 @@
     background-color: var(--bg);
     font-size: 18px;
     line-height: 1.8;
+    margin: 0;
+    padding: 0;
   }
 
   input {

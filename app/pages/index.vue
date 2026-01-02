@@ -11,7 +11,7 @@
 
 </script>
 
-<style lang="css">
+<style>
 h2 {
     font-weight: 700;
     font-family: 'inadoong';

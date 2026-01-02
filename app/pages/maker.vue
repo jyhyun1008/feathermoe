@@ -1,57 +1,18 @@
 <template>
     <div id="tab-wrapper">
         <div id="tab-items">
-            <div class="tab-item act" @click="tabclick(0)" id="tab0">
-                <div>바디</div>
-            </div>
-            <div class="tab-item" @click="tabclick(1)" id="tab1">
-                <div>눈썹</div>
-            </div>
-            <div class="tab-item" @click="tabclick(2)" id="tab2">
-                <div>왼눈</div>
-            </div>
-            <div class="tab-item" @click="tabclick(3)" id="tab3">
-                <div>오른눈</div>
-            </div>
-            <div class="tab-item" @click="tabclick(4)" id="tab4">
-                <div>입</div>
-            </div>
-            <div class="tab-item" @click="tabclick(5)" id="tab5">
-                <div>홍조</div>
-            </div>
-            <div class="tab-item" @click="tabclick(6)" id="tab6">
-                <div>뒷머리</div>
-            </div>
-            <div class="tab-item" @click="tabclick(7)" id="tab7">
-                <div>앞머리</div>
-            </div>
-            <div class="tab-item" @click="tabclick(8)" id="tab8">
-                <div>옆머리L</div>
-            </div>
-            <div class="tab-item" @click="tabclick(9)" id="tab9">
-                <div>옆머리R</div>
-            </div>
-            <div class="tab-item" @click="tabclick(10)" id="tab10">
-                <div>머리+</div>
-            </div>
-            <div class="tab-item" @click="tabclick(13)" id="tab13">
-                <div>상의</div>
-            </div>
-            <div class="tab-item" @click="tabclick(14)" id="tab14">
-                <div>하의</div>
-            </div>
-            <div class="tab-item" @click="tabclick(15)" id="tab15">
-                <div>겉옷</div>
-            </div>
-            <div class="tab-item" @click="tabclick(16)" id="tab16">
-                <div>양말</div>
-            </div>
-            <div class="tab-item" @click="tabclick(17)" id="tab17">
-                <div>신발</div>
+            <div 
+                v-for="(name, index) in tabNames" 
+                :key="index"
+                class="tab-item" 
+                :class="{ act: activeTab === index }"
+                @click="activeTab = index"
+            >
+                <div>{{ name }}</div>
             </div>
         </div>
         <div id="content-items">
-            <div class="content-item act" id="content0">
+            <div v-if="activeTab === 0" class="content-item act">   
                 <div class="item-grid">
                     <div class="item">
                         <input class="colorinput" type="color" v-model="color0"/>
@@ -61,7 +22,7 @@
                     </div>
                 </div>
             </div>
-            <div class="content-item" id="content1">
+            <div v-if="activeTab === 1" class="content-item act">
                 <div class="item-grid">
                     <div class="item">
                         <input class="colorinput" type="color" v-model="color1"/>
@@ -71,7 +32,7 @@
                     </div>
                 </div>
             </div>
-            <div class="content-item" id="content2">
+            <div v-if="activeTab === 2" class="content-item act">
                 <div class="item-grid">
                     <div class="item">
                         <input class="colorinput" type="color" v-model="color2"/>
@@ -84,7 +45,7 @@
                     </div>
                 </div>
             </div>
-            <div class="content-item" id="content3">
+            <div v-if="activeTab === 3" class="content-item act">
                 <div class="item-grid">
                     <div class="item">
                         <input class="colorinput" type="color" v-model="color3"/>
@@ -94,7 +55,7 @@
                     </div>
                 </div>
             </div>
-            <div class="content-item" id="content4">
+            <div v-if="activeTab === 4" class="content-item act">
                 <div class="item-grid">
                     <div class="item">
                         <input class="colorinput" type="color" v-model="color4"/>
@@ -104,7 +65,7 @@
                     </div>
                 </div>
             </div>
-            <div class="content-item" id="content5">
+            <div v-if="activeTab === 5" class="content-item act">
                 <div class="item-grid">
                     <div class="item">
                         <input class="colorinput" type="color" v-model="color5"/>
@@ -114,7 +75,7 @@
                     </div>
                 </div>
             </div>
-            <div class="content-item" id="content6">
+            <div v-if="activeTab === 6" class="content-item act">
                 <div class="item-grid">
                     <div class="item">
                         <input class="colorinput" type="color" v-model="color6"/>
@@ -124,7 +85,7 @@
                     </div>
                 </div>
             </div>
-            <div class="content-item" id="content7">
+            <div v-if="activeTab === 7" class="content-item act">
                 <div class="item-grid">
                     <div class="item">
                         <input class="colorinput" type="color" v-model="color6"/>
@@ -134,7 +95,7 @@
                     </div>
                 </div>
             </div>
-            <div class="content-item" id="content8">
+            <div v-if="activeTab === 8" class="content-item act">
                 <div class="item-grid">
                     <div class="item">
                         <input class="colorinput" type="color" v-model="color6"/>
@@ -144,7 +105,7 @@
                     </div>
                 </div>
             </div>
-            <div class="content-item" id="content9">
+            <div v-if="activeTab === 9" class="content-item act">
                 <div class="item-grid">
                     <div class="item">
                         <input class="colorinput" type="color" v-model="color6"/>
@@ -154,14 +115,14 @@
                     </div>
                 </div>
             </div>
-            <div class="content-item" id="content10">
+            <div v-if="activeTab === 10" class="content-item act">
                 <div class="item-grid">
                     <div class="item">
                         <input class="colorinput" type="color" v-model="color6"/>
                     </div>
                 </div>
             </div>
-            <div class="content-item" id="content13">
+            <div v-if="activeTab === 13" class="content-item act">
                 <div class="item-grid">
                     <div class="item">
                         <input class="colorinput" type="color" v-model="color13"/>
@@ -171,7 +132,7 @@
                     </div>
                 </div>
             </div>
-            <div class="content-item" id="content14">
+            <div v-if="activeTab === 14" class="content-item act">
                 <div class="item-grid">
                     <div class="item">
                         <input class="colorinput" type="color" v-model="color14"/>
@@ -181,21 +142,21 @@
                     </div>
                 </div>
             </div>
-            <div class="content-item" id="content15">
+            <div v-if="activeTab === 15" class="content-item act">
                 <div class="item-grid">
                     <div class="item">
                         <input class="colorinput" type="color" v-model="color15"/>
                     </div>
                 </div>
             </div>
-            <div class="content-item" id="content16">
+            <div v-if="activeTab === 16" class="content-item act">
                 <div class="item-grid">
                     <div class="item">
                         <input class="colorinput" type="color" v-model="color16"/>
                     </div>
                 </div>
             </div>
-            <div class="content-item" id="content17">
+            <div v-if="activeTab === 17" class="content-item act">
                 <div class="item-grid">
                     <div class="item">
                         <input class="colorinput" type="color" v-model="color17"/>
@@ -248,6 +209,12 @@
 
 <script setup>
     
+    import { ref } from 'vue' // 이 라인이 반드시 있어야 합니다!
+    import Svg from '../components/Svg.vue'
+
+    const activeTab = ref(0) // 2. 현재 활성화된 탭 상태 관리
+const tabNames = ['바디', '눈썹', '왼눈', '오른눈', '입', '홍조', '뒷머리', '앞머리', '옆머리L', '옆머리R', '머리+', '머리+', '머리+', '상의', '하의', '겉옷', '양말', '신발']
+
     const characterName = ref('캐릭터 이름')
     const color0 = ref('#fff0eb')
     const color1 = ref('#86D7FF')
@@ -263,16 +230,9 @@
     const color16 = ref('#ffffff')
     const color17 = ref('#86D7FF')
 
-    const tabclick = function(n) {
-        document.querySelector('.tab-item.act').classList.remove('act')
-        document.querySelector(`#tab${n}`).classList.add('act')
-        document.querySelector('.content-item.act').classList.remove('act')
-        document.querySelector(`#content${n}`).classList.add('act')
-    }
-
 </script>
 
-<style lang="css">
+<style>
 
     #tab-wrapper {
         margin: 0 auto;
@@ -374,14 +334,15 @@
         font-size: min(2.5vw, 25px);
         border: 0;
         height: min(3vw, 30px);
+        background-color: transparent;
     }
 
     .colorinput {
         position: absolute;
-        width: 110%;
-        height: 110%;
-        top: -5px;
-        left: -5px;
+        width: 120%;
+        height: 120%;
+        top: -10px;
+        left: -10px;
     }
 
     .stroke {
