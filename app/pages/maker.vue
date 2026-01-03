@@ -274,9 +274,29 @@
             <Svg src="/svg/page01-fold.svg" stroke="#00000011"></Svg>
         </div>
         <div id="maker2" class="maker">
-            <Svg :src="`/svg/bang/${settings.bang.code}-fill.svg`" :fill=settings.back.color :key="settings.bang.code+settings.back.color"></Svg>
-            <Svg :src="`/svg/rightside/${settings.rightside.code}-fill.svg`" :fill=settings.back.color :key="settings.rightside.code+settings.back.color"></Svg>
-            <Svg :src="`/svg/leftside/${settings.leftside.code}-fill.svg`" :fill=settings.back.color :key="settings.leftside.code+settings.back.color"></Svg>
+            <Svg :src="`/svg/back/${settings.back.code}-preview-fill.svg`" :fill=settings.back.color :key="settings.back.code+settings.back.color"></Svg>
+            <Svg :src="`/svg/skin/${settings.skin.code}-preview-fill.svg`" :fill=settings.skin.color :key="settings.skin.code+settings.skin.color"></Svg>
+            <Svg :src="`/svg/shirt/${settings.shirt.code}-preview-fill.svg`" :fill=settings.shirt.color :key="settings.shirt.code+settings.shirt.color"></Svg>
+            <Svg :src="`/svg/shirt/${settings.shirt.code}-preview-stroke.svg`" :stroke=settings.shirt.color :key="settings.shirt.code+settings.shirt.color" class="stroke"></Svg>
+            <Svg :src="`/svg/pants/${settings.pants.code}-preview-fill.svg`" :fill=settings.pants.color :key="settings.pants.code+settings.pants.color"></Svg>
+            <Svg :src="`/svg/pants/${settings.pants.code}-preview-stroke.svg`" :stroke=settings.pants.color :key="settings.pants.code+settings.pants.color" class="stroke"></Svg>
+            <Svg :src="`/svg/skin/${settings.skin.code}-preview-face.svg`" :fill=settings.skin.color :key="settings.skin.code+settings.skin.color"></Svg>
+            <Svg :src="`/svg/face/${settings.face.code}-preview-fill.svg`" :fill=settings.face.color :key="settings.face.code+settings.face.color"></Svg>
+            <Svg :src="`/svg/eyebrows/${settings.eyebrows.code}-preview-fill.svg`" :fill=settings.eyebrows.color :key="settings.eyebrows.code+settings.eyebrows.color"></Svg>
+            <Svg :src="`/svg/eyebrows/${settings.eyebrows.code}-preview-stroke.svg`" :stroke=settings.eyebrows.color :key="settings.eyebrows.code+settings.eyebrows.color" class="stroke"></Svg>
+            <Svg :src="`/svg/lefteye/${settings.lefteye.code}-preview-contrast.svg`" :fill=settings.lefteye.contrast :key="settings.lefteye.code+settings.lefteye.contrast"></Svg>
+            <Svg :src="`/svg/righteye/${settings.righteye.code}-preview-contrast.svg`" :fill=settings.lefteye.contrast :key="settings.righteye.code+settings.lefteye.contrast"></Svg>
+            <Svg :src="`/svg/lefteye/${settings.lefteye.code}-preview-fill.svg`" :fill=settings.lefteye.color :key="settings.lefteye.code+settings.lefteye.color"></Svg>
+            <Svg :src="`/svg/righteye/${settings.righteye.code}-preview-fill.svg`" :fill=settings.righteye.color :key="settings.righteye.code+settings.righteye.color"></Svg>
+            <Svg src="/svg/pupil-preview-fill.svg" :fill=settings.righteye.contrast :key=settings.righteye.contrast></Svg>
+            <Svg src="/svg/highlight-preview-fill.svg" fill="#ffffff"></Svg>
+            <Svg :src="`/svg/lefteye/${settings.lefteye.code}-preview-stroke.svg`" stroke="#000" :key=settings.lefteye.code></Svg>
+            <Svg :src="`/svg/righteye/${settings.righteye.code}-preview-stroke.svg`" stroke="#000" :key=settings.righteye.code></Svg>
+            <Svg :src="`/svg/mouth/${settings.mouth.code}-preview-fill.svg`" :fill=settings.mouth.color :key="settings.mouth.code+settings.mouth.color"></Svg>
+            <Svg :src="`/svg/mouth/${settings.mouth.code}-preview-stroke.svg`" :stroke=settings.mouth.color :key="settings.mouth.code+settings.mouth.color" class="stroke"></Svg>
+            <Svg :src="`/svg/bang/${settings.bang.code}-stroke.svg`" :fill=settings.back.color :key="settings.bang.code+settings.back.color"></Svg>
+            <Svg :src="`/svg/rightside/${settings.rightside.code}-stroke.svg`" :fill=settings.back.color :key="settings.rightside.code+settings.back.color"></Svg>
+            <Svg :src="`/svg/leftside/${settings.leftside.code}-stroke.svg`" :fill=settings.back.color :key="settings.leftside.code+settings.back.color"></Svg>
             <Svg :src="`/svg/rightside/${settings.rightside.code}-stroke.svg`" stroke="#55339955" :key=settings.rightside.code ></Svg>
             <Svg :src="`/svg/leftside/${settings.leftside.code}-stroke.svg`" stroke="#55339955" :key=settings.leftside.code ></Svg>
             <Svg :src="`/svg/bang/${settings.bang.code}-stroke.svg`" :fill=settings.back.color :key="settings.bang.code+settings.back.color"></Svg>
