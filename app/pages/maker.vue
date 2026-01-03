@@ -15,152 +15,229 @@
             <div v-if="activeTab === 0" class="content-item act">   
                 <div class="item-grid">
                     <div class="item">
-                        <input class="colorinput" type="color" v-model="color0"/>
+                        <input class="colorinput" type="color" v-model="settings.skin.color"/>
                     </div>
-                    <div class="item">
-                        기본 몸통
-                    </div>
+                    <template v-for="(itemName, index) in items.skin.types" :key="index">
+                        <div v-if="!items.skin.require || index != 0" class="item" @click="updateCode('skin', index.toString().padStart(2, '0'))">
+                            {{ itemName }}
+                        </div>
+                    </template>
                 </div>
             </div>
             <div v-if="activeTab === 1" class="content-item act">
                 <div class="item-grid">
                     <div class="item">
-                        <input class="colorinput" type="color" v-model="color1"/>
+                        <input class="colorinput" type="color" v-model="settings.eyebrows.color"/>
                     </div>
-                    <div class="item">
-                        일자눈썹
-                    </div>
+                    <template v-for="(itemName, index) in items.eyebrows.types" :key="index">
+                        <div v-if="!items.eyebrows.require || index != 0" class="item" @click="updateCode('eyebrows', index.toString().padStart(2, '0'))">
+                            {{ itemName }}
+                        </div>
+                    </template>
                 </div>
             </div>
             <div v-if="activeTab === 2" class="content-item act">
                 <div class="item-grid">
                     <div class="item">
-                        <input class="colorinput" type="color" v-model="color2"/>
+                        <input class="colorinput" type="color" v-model="settings.lefteye.color"/>
                     </div>
                     <div class="item">
-                        <input class="colorinput" type="color" v-model="color2_1"/>
+                        <input class="colorinput" type="color" v-model="settings.lefteye.contrast"/>
                     </div>
                     <div class="item">
-                        동그란눈
+                        <input class="colorinput" type="color" v-model="settings.righteye.contrast"/>
                     </div>
+                    <template v-for="(itemName, index) in items.lefteye.types" :key="index">
+                        <div v-if="!items.lefteye.require || index != 0" class="item" @click="updateCode('lefteye', index.toString().padStart(2, '0'))">
+                            {{ itemName }}
+                        </div>
+                    </template>
                 </div>
             </div>
             <div v-if="activeTab === 3" class="content-item act">
                 <div class="item-grid">
                     <div class="item">
-                        <input class="colorinput" type="color" v-model="color3"/>
+                        <input class="colorinput" type="color" v-model="settings.righteye.color"/>
                     </div>
                     <div class="item">
-                        동그란눈
+                        <input class="colorinput" type="color" v-model="settings.lefteye.contrast"/>
                     </div>
+                    <div class="item">
+                        <input class="colorinput" type="color" v-model="settings.righteye.contrast"/>
+                    </div>
+                    <template v-for="(itemName, index) in items.righteye.types" :key="index">
+                        <div v-if="!items.righteye.require || index != 0" class="item" @click="updateCode('righteye', index.toString().padStart(2, '0'))">
+                            {{ itemName }}
+                        </div>
+                    </template>
                 </div>
             </div>
             <div v-if="activeTab === 4" class="content-item act">
                 <div class="item-grid">
                     <div class="item">
-                        <input class="colorinput" type="color" v-model="color4"/>
+                        <input class="colorinput" type="color" v-model="settings.mouth.color"/>
                     </div>
-                    <div class="item">
-                        고양이입
-                    </div>
+                    <template v-for="(itemName, index) in items.mouth.types" :key="index">
+                        <div v-if="!items.mouth.require || index != 0" class="item" @click="updateCode('mouth', index.toString().padStart(2, '0'))">
+                            {{ itemName }}
+                        </div>
+                    </template>
                 </div>
             </div>
             <div v-if="activeTab === 5" class="content-item act">
                 <div class="item-grid">
                     <div class="item">
-                        <input class="colorinput" type="color" v-model="color5"/>
+                        <input class="colorinput" type="color" v-model="settings.face.color"/>
                     </div>
-                    <div class="item">
-                        홍조
-                    </div>
+                    <template v-for="(itemName, index) in items.face.types" :key="index">
+                        <div v-if="!items.face.require || index != 0" class="item" @click="updateCode('face', index.toString().padStart(2, '0'))">
+                            {{ itemName }}
+                        </div>
+                    </template>
                 </div>
             </div>
             <div v-if="activeTab === 6" class="content-item act">
                 <div class="item-grid">
                     <div class="item">
-                        <input class="colorinput" type="color" v-model="color6"/>
+                        <input class="colorinput" type="color" v-model="settings.back.color"/>
                     </div>
-                    <div class="item">
-                        기본 머리
-                    </div>
+                    <template v-for="(itemName, index) in items.back.types" :key="index">
+                        <div v-if="!items.back.require || index != 0" class="item" @click="updateCode('back', index.toString().padStart(2, '0'))">
+                            {{ itemName }}
+                        </div>
+                    </template>
                 </div>
             </div>
             <div v-if="activeTab === 7" class="content-item act">
                 <div class="item-grid">
                     <div class="item">
-                        <input class="colorinput" type="color" v-model="color6"/>
+                        <input class="colorinput" type="color" v-model="settings.back.color"/>
                     </div>
-                    <div class="item">
-                        일자 앞머리
-                    </div>
+                    <template v-for="(itemName, index) in items.bang.types" :key="index">
+                        <div v-if="!items.bang.require || index != 0" class="item" @click="updateCode('bang', index.toString().padStart(2, '0'))">
+                            {{ itemName }}
+                        </div>
+                    </template>
                 </div>
             </div>
             <div v-if="activeTab === 8" class="content-item act">
                 <div class="item-grid">
                     <div class="item">
-                        <input class="colorinput" type="color" v-model="color6"/>
+                        <input class="colorinput" type="color" v-model="settings.back.color"/>
                     </div>
-                    <div class="item">
-                        긴 옆머리
-                    </div>
+                    <template v-for="(itemName, index) in items.leftside.types" :key="index">
+                        <div v-if="!items.leftside.require || index != 0" class="item" @click="updateCode('leftside', index.toString().padStart(2, '0'))">
+                            {{ itemName }}
+                        </div>
+                    </template>
                 </div>
             </div>
             <div v-if="activeTab === 9" class="content-item act">
                 <div class="item-grid">
                     <div class="item">
-                        <input class="colorinput" type="color" v-model="color6"/>
+                        <input class="colorinput" type="color" v-model="settings.back.color"/>
                     </div>
-                    <div class="item">
-                        긴 옆머리
-                    </div>
+                    <template v-for="(itemName, index) in items.rightside.types" :key="index">
+                        <div v-if="!items.rightside.require || index != 0" class="item" @click="updateCode('rightside', index.toString().padStart(2, '0'))">
+                            {{ itemName }}
+                        </div>
+                    </template>
                 </div>
             </div>
             <div v-if="activeTab === 10" class="content-item act">
                 <div class="item-grid">
                     <div class="item">
-                        <input class="colorinput" type="color" v-model="color6"/>
+                        <input class="colorinput" type="color" v-model="settings.add01.color"/>
                     </div>
+                    <template v-for="(itemName, index) in items.add01.types" :key="index">
+                        <div v-if="!items.add01.require || index != 0" class="item" @click="updateCode('add01', index.toString().padStart(2, '0'))">
+                            {{ itemName }}
+                        </div>
+                    </template>
+                </div>
+            </div>
+            <div v-if="activeTab === 11" class="content-item act">
+                <div class="item-grid">
+                    <div class="item">
+                        <input class="colorinput" type="color" v-model="settings.add02.color"/>
+                    </div>
+                    <template v-for="(itemName, index) in items.add02.types" :key="index">
+                        <div v-if="!items.add02.require || index != 0" class="item" @click="updateCode('add02', index.toString().padStart(2, '0'))">
+                            {{ itemName }}
+                        </div>
+                    </template>
+                </div>
+            </div>
+            <div v-if="activeTab === 12" class="content-item act">
+                <div class="item-grid">
+                    <div class="item">
+                        <input class="colorinput" type="color" v-model="settings.add03.color"/>
+                    </div>
+                    <template v-for="(itemName, index) in items.add03.types" :key="index">
+                        <div v-if="!items.add03.require || index != 0" class="item" @click="updateCode('add03', index.toString().padStart(2, '0'))">
+                            {{ itemName }}
+                        </div>
+                    </template>
                 </div>
             </div>
             <div v-if="activeTab === 13" class="content-item act">
                 <div class="item-grid">
                     <div class="item">
-                        <input class="colorinput" type="color" v-model="color13"/>
+                        <input class="colorinput" type="color" v-model="settings.shirt.color"/>
                     </div>
-                    <div class="item">
-                        교복 셔츠
-                    </div>
+                    <template v-for="(itemName, index) in items.shirt.types" :key="index">
+                        <div v-if="!items.shirt.require || index != 0" class="item" @click="updateCode('shirt', index.toString().padStart(2, '0'))">
+                            {{ itemName }}
+                        </div>
+                    </template>
                 </div>
             </div>
             <div v-if="activeTab === 14" class="content-item act">
                 <div class="item-grid">
                     <div class="item">
-                        <input class="colorinput" type="color" v-model="color14"/>
+                        <input class="colorinput" type="color" v-model="settings.pants.color"/>
                     </div>
-                    <div class="item">
-                        교복 치마
-                    </div>
+                    <template v-for="(itemName, index) in items.pants.types" :key="index">
+                        <div v-if="!items.pants.require || index != 0" class="item" @click="updateCode('pants', index.toString().padStart(2, '0'))">
+                            {{ itemName }}
+                        </div>
+                    </template>
                 </div>
             </div>
             <div v-if="activeTab === 15" class="content-item act">
                 <div class="item-grid">
                     <div class="item">
-                        <input class="colorinput" type="color" v-model="color15"/>
+                        <input class="colorinput" type="color" v-model="settings.outer.color"/>
                     </div>
+                    <template v-for="(itemName, index) in items.outer.types" :key="index">
+                        <div v-if="!items.outer.require || index != 0" class="item" @click="updateCode('outer', index.toString().padStart(2, '0'))">
+                            {{ itemName }}
+                        </div>
+                    </template>
                 </div>
             </div>
             <div v-if="activeTab === 16" class="content-item act">
                 <div class="item-grid">
                     <div class="item">
-                        <input class="colorinput" type="color" v-model="color16"/>
+                        <input class="colorinput" type="color" v-model="settings.socks.color"/>
                     </div>
+                    <template v-for="(itemName, index) in items.socks.types" :key="index">
+                        <div v-if="!items.socks.require || index != 0" class="item" @click="updateCode('socks', index.toString().padStart(2, '0'))">
+                            {{ itemName }}
+                        </div>
+                    </template>
                 </div>
             </div>
             <div v-if="activeTab === 17" class="content-item act">
                 <div class="item-grid">
                     <div class="item">
-                        <input class="colorinput" type="color" v-model="color17"/>
+                        <input class="colorinput" type="color" v-model="settings.shoes.color"/>
                     </div>
+                    <template v-for="(itemName, index) in items.shoes.types" :key="index">
+                        <div v-if="!items.shoes.require || index != 0" class="item" @click="updateCode('shoes', index.toString().padStart(2, '0'))">
+                            {{ itemName }}
+                        </div>
+                    </template>
                 </div>
             </div>
         </div>
@@ -171,38 +248,40 @@
                 <div>FeatherMOE</div>
                 <input v-model="characterName" />
             </div>
-            <Svg src="/svg/skin-fill.svg" :fill=color0 :key=color0></Svg>
-            <Svg src="/svg/face-fill.svg" :fill=color5 :key=color5></Svg>
-            <Svg src="/svg/eyebrows-stroke.svg" :stroke=color1 :key=color1 class="stroke"></Svg>
-            <Svg src="/svg/lefteyewhite-fill.svg" :fill=color2_1 :key=color2_1></Svg>
-            <Svg src="/svg/righteyewhite-fill.svg" :fill=color2_1 :key=color2_1></Svg>
-            <Svg src="/svg/lefteye-fill.svg" :fill=color2 :key=color2></Svg>
-            <Svg src="/svg/righteye-fill.svg" :fill=color3 :key=color3></Svg>
-            <Svg src="/svg/pupil-fill.svg" fill="#33009999"></Svg>
+            <Svg :src="`/svg/skin/${settings.skin.code}-fill.svg`" :fill=settings.skin.color :key="settings.skin.code+settings.skin.color"></Svg>
+            <Svg :src="`/svg/face/${settings.face.code}-fill.svg`" :fill=settings.face.color :key="settings.face.code+settings.face.color"></Svg>
+            <Svg :src="`/svg/eyebrows/${settings.eyebrows.code}-fill.svg`" :fill=settings.eyebrows.color :key="settings.eyebrows.code+settings.eyebrows.color"></Svg>
+            <Svg :src="`/svg/eyebrows/${settings.eyebrows.code}-stroke.svg`" :stroke=settings.eyebrows.color :key="settings.eyebrows.code+settings.eyebrows.color" class="stroke"></Svg>
+            <Svg :src="`/svg/lefteye/${settings.lefteye.code}-contrast.svg`" :fill=settings.lefteye.contrast :key="settings.lefteye.code+settings.lefteye.contrast"></Svg>
+            <Svg :src="`/svg/righteye/${settings.righteye.code}-contrast.svg`" :fill=settings.lefteye.contrast :key="settings.righteye.code+settings.lefteye.contrast"></Svg>
+            <Svg :src="`/svg/lefteye/${settings.lefteye.code}-fill.svg`" :fill=settings.lefteye.color :key="settings.lefteye.code+settings.lefteye.color"></Svg>
+            <Svg :src="`/svg/righteye/${settings.righteye.code}-fill.svg`" :fill=settings.righteye.color :key="settings.righteye.code+settings.righteye.color"></Svg>
+            <Svg src="/svg/pupil-fill.svg" :fill=settings.righteye.contrast :key=settings.righteye.contrast></Svg>
             <Svg src="/svg/highlight-fill.svg" fill="#ffffff"></Svg>
-            <Svg src="/svg/lefteye-stroke.svg" stroke="#000"></Svg>
-            <Svg src="/svg/righteye-stroke.svg" stroke="#000"></Svg>
-            <Svg src="/svg/mouth-stroke.svg" :stroke=color4 :key=color4 class="stroke"></Svg>
-            <Svg src="/svg/hair-fill.svg" :fill=color6 :key=color6></Svg>
-            <Svg src="/svg/shirt-fill.svg" :fill=color13 :key=color13></Svg>
-            <Svg src="/svg/shirt-stroke.svg" :stroke=color13 :key=color13 class="stroke"></Svg>
-            <Svg src="/svg/skirt-fill.svg" :fill=color14 :key=color14></Svg>
-            <Svg src="/svg/skirt-stroke.svg" :stroke=color14 :key=color14 class="stroke"></Svg>
-            <Svg src="/svg/basic-cut.svg" stroke="#55339955"></Svg>
-            <Svg src="/svg/basic-fold.svg" stroke="#00000011"></Svg>
+            <Svg :src="`/svg/lefteye/${settings.lefteye.code}-stroke.svg`" stroke="#000" :key=settings.lefteye.code></Svg>
+            <Svg :src="`/svg/righteye/${settings.righteye.code}-stroke.svg`" stroke="#000" :key=settings.righteye.code></Svg>
+            <Svg :src="`/svg/mouth/${settings.mouth.code}-fill.svg`" :fill=settings.mouth.color :key="settings.mouth.code+settings.mouth.color"></Svg>
+            <Svg :src="`/svg/mouth/${settings.mouth.code}-stroke.svg`" :stroke=settings.mouth.color :key="settings.mouth.code+settings.mouth.color" class="stroke"></Svg>
+            <Svg src="/svg/hair-fill.svg" :fill=settings.back.color :key=settings.back.color ></Svg>
+            <Svg :src="`/svg/shirt/${settings.shirt.code}-fill.svg`" :fill=settings.shirt.color :key="settings.shirt.code+settings.shirt.color"></Svg>
+            <Svg :src="`/svg/shirt/${settings.shirt.code}-stroke.svg`" :stroke=settings.shirt.color :key="settings.shirt.code+settings.shirt.color" class="stroke"></Svg>
+            <Svg :src="`/svg/pants/${settings.pants.code}-fill.svg`" :fill=settings.pants.color :key="settings.pants.code+settings.pants.color"></Svg>
+            <Svg :src="`/svg/pants/${settings.pants.code}-stroke.svg`" :stroke=settings.pants.color :key="settings.pants.code+settings.pants.color" class="stroke"></Svg>
+            <Svg src="/svg/page01-cut.svg" stroke="#55339955"></Svg>
+            <Svg src="/svg/page01-fold.svg" stroke="#00000011"></Svg>
         </div>
         <div id="maker2" class="maker">
-            <Svg src="/svg/back-fill.svg" :fill=color6 :key=color6></Svg>
-            <Svg src="/svg/bang-fill.svg" :fill=color6 :key=color6></Svg>
-            <Svg src="/svg/rightside-fill.svg" :fill=color6 :key=color6></Svg>
-            <Svg src="/svg/leftside-fill.svg" :fill=color6 :key=color6></Svg>
-            <Svg src="/svg/rightside-stroke.svg" stroke="#55339955"></Svg>
-            <Svg src="/svg/leftside-stroke.svg" stroke="#55339955"></Svg>
-            <Svg src="/svg/bang-stroke.svg" :fill=color6 :key=color6></Svg>
-            <Svg src="/svg/bang-highlight.svg" fill="#ffffdd99" ></Svg>
-            <Svg src="/svg/bang-stroke.svg" stroke="#55339955"></Svg>
-            <Svg src="/svg/back-stroke.svg" stroke="#55339955"></Svg>
-            <Svg src="/svg/back-fold.svg" stroke="#00000011"></Svg>
+            <Svg :src="`/svg/bang/${settings.bang.code}-fill.svg`" :fill=settings.back.color :key="settings.bang.code+settings.back.color"></Svg>
+            <Svg :src="`/svg/rightside/${settings.rightside.code}-fill.svg`" :fill=settings.back.color :key="settings.rightside.code+settings.back.color"></Svg>
+            <Svg :src="`/svg/leftside/${settings.leftside.code}-fill.svg`" :fill=settings.back.color :key="settings.leftside.code+settings.back.color"></Svg>
+            <Svg :src="`/svg/rightside/${settings.rightside.code}-stroke.svg`" stroke="#55339955" :key=settings.rightside.code ></Svg>
+            <Svg :src="`/svg/leftside/${settings.leftside.code}-stroke.svg`" stroke="#55339955" :key=settings.leftside.code ></Svg>
+            <Svg :src="`/svg/bang/${settings.bang.code}-stroke.svg`" :fill=settings.back.color :key="settings.bang.code+settings.back.color"></Svg>
+            <Svg :src="`/svg/back/${settings.back.code}-fill.svg`" :fill=settings.back.color :key="settings.back.code+settings.back.color"></Svg>
+            <Svg src="/svg/hairlight-fill.svg" :fill=settings.back.contrast :key=settings.back.contrast ></Svg>
+            <Svg :src="`/svg/bang/${settings.bang.code}-stroke.svg`" stroke="#55339955" :key=settings.bang.code ></Svg>
+            <Svg :src="`/svg/back/${settings.back.code}-stroke.svg`" stroke="#55339955" :key=settings.back.code ></Svg>
+            <Svg src="/svg/page02-fold.svg" stroke="#00000011"></Svg>
         </div>
     </div>
 </template>
@@ -213,22 +292,137 @@
     import Svg from '../components/Svg.vue'
 
     const activeTab = ref(0) // 2. 현재 활성화된 탭 상태 관리
-const tabNames = ['바디', '눈썹', '왼눈', '오른눈', '입', '홍조', '뒷머리', '앞머리', '옆머리L', '옆머리R', '머리+', '머리+', '머리+', '상의', '하의', '겉옷', '양말', '신발']
+    const tabNames = ['피부', '눈썹', '왼눈', '오른눈', '입', '홍조', '뒷머리', '앞머리', '옆머리L', '옆머리R', '머리+', '머리+', '머리+', '상의', '하의', '겉옷', '양말', '신발']
+    const items = {
+        skin: {
+            require: true,
+            types: ['none', '기본']
+        }, eyebrows: {
+            require: false,
+            types: ['none', '기본']
+        }, lefteye: {
+            require: true,
+            types: ['none', '동그란 눈']
+        }, righteye: {
+            require: true,
+            types: ['none', '동그란 눈']
+        }, mouth: {
+            require: false,
+            types: ['none', '고양이 입']
+        }, face: {
+            require: true,
+            types: ['none', '홍조']
+        }, back: {
+            require: false,
+            types: ['none', '볼륨 단발']
+        }, bang: {
+            require: true, 
+            types: ['none', '일자 앞머리']
+        }, leftside: {
+            require: false, 
+            types: ['none', '긴 옆머리']
+        }, rightside: {
+            require: false, 
+            types: ['none', '긴 옆머리']
+        }, add01: {
+            require: false,
+            types: ['none']
+        }, add02: {
+            require: false,
+            types: ['none']
+        }, add03: {
+            require: false,
+            types: ['none']
+        }, shirt: {
+            require: true,
+            types: ['none', '교복 셔츠']
+        }, pants: {
+            require: true,
+            types: ['none', '교복 치마']
+        }, outer: {
+            require: false,
+            types: ['none']
+        }, socks: {
+            require: false,
+            types: ['none']
+        }, shoes: {
+            require: false,
+            types: ['none']
+        }, bg: {
+            require: true,
+            types: ['none', '단색 배경']
+        }
+    }
 
     const characterName = ref('캐릭터 이름')
-    const color0 = ref('#fff0eb')
-    const color1 = ref('#86D7FF')
-    const color2 = ref('#86D7FF')
-    const color2_1 = ref('#ffffff')
-    const color3 = ref('#86D7FF')
-    const color4 = ref('#ff9ead')
-    const color5 = ref('#ffc7cd')
-    const color6 = ref('#86D7FF')
-    const color13 = ref('#ffffff')
-    const color14 = ref('#86D7FF')
-    const color15 = ref('#86D7FF')
-    const color16 = ref('#ffffff')
-    const color17 = ref('#86D7FF')
+
+    const settings = ref({
+        skin: {
+            code: '01',
+            color: '#fff0eb'
+        }, eyebrows: {
+            code: '01',
+            color: '#86D7FF'
+        }, lefteye: {
+            code: '01',
+            color: '#86D7FF',
+            contrast: '#ffffff' // 흰자
+        }, righteye: {
+            code: '01',
+            color: '#86D7FF',
+            contrast: '#000000' // 동공
+        }, mouth: {
+            code: '01',
+            color: '#ff9ead'
+        }, face: {
+            code: '01',
+            color: '#ffdbe1'
+        }, back: {
+            code: '01',
+            color: '#86D7FF',
+            contrast: '#ffffdd' // 하이라이트
+        }, bang: {
+            code: '01',
+            color: ''
+        }, leftside: {
+            code: '01',
+            color: ''
+        }, rightside: {
+            code: '01',
+            color: ''
+        }, add01: {
+            code: '01',
+            color: '#86D7FF'
+        }, add02: {
+            code: '01',
+            color: '#86D7FF'
+        }, add03: {
+            code: '01',
+            color: '#86D7FF'
+        }, shirt: {
+            code: '01',
+            color: '#ffffff'
+        }, pants: {
+            code: '01',
+            color: '#86D7FF'
+        }, outer: {
+            code: '01',
+            color: '#86D7FF'
+        }, socks: {
+            code: '01',
+            color: '#ffffff'
+        }, shoes: {
+            code: '01',
+            color: '#86D7FF'
+        }, bg: {
+            code: '01',
+            color: '#c8edff'
+        }
+    })
+
+    const updateCode = function(part, code) {
+        settings.value[part].code = code
+    }
 
 </script>
 
