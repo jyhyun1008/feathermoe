@@ -101,6 +101,9 @@
                     <div class="item">
                         <input class="colorinput" type="color" v-model="settings.back.color"/>
                     </div>
+                    <div class="item">
+                        <input class="colorinput" type="color" v-model="settings.back.contrast"/>
+                    </div>
                     <template v-for="(itemName, index) in items.back.types" :key="index">
                         <div v-if="!items.back.require || index != 0" class="item" @click="updateCode('back', index.toString().padStart(2, '0'))">
                             {{ itemName }}
